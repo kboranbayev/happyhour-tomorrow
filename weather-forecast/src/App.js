@@ -9,14 +9,12 @@ const API = "http://api.weatherstack.com/forecast?access_key=" + KEY + "&query="
 
 // function call starts here
 function App() {
-  let data; // local variable
 
   axios.post(API).then(res => { // post API call and get response
     if (res.data.error === "undefined" || res.data.success === false) {
       setTimeout(() => {console.log("Refreshing");window.location.reload();}, 2000) // if callback is broken or error refresh after 2 seconds
     } else {
       console.log(res); // show full response data
-      data = res.data; // assign the received data
     }
   });
 
